@@ -1,15 +1,15 @@
 var isDate = function (input) {
-  if (input instanceof Date && !isNaN(input)) {
+ if (Object.prototype.toString.call(input) === "[object Date]" && !isNaN(input.getTime())) {
         return true;
     }
 
-    // Check if the input is a string or number and can be converted to a valid date
+    // Check if input is a string or number and can be converted into a valid date
     if (typeof input === "string" || typeof input === "number") {
         const date = new Date(input);
-        return !isNaN(date);
+        return date instanceof Date && !isNaN(date.getTime());
     }
 
-    return false;
+    return false
 };
 
 // Do not change the code below.
